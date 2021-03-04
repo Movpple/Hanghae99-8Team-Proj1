@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .button {
+        width: 4rem;
+        height: 4rem;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function searchval() {
+        let cocktail = $("#test").val();
+        console.log(cocktail);
+        $.ajax({
+          type: "GET",
+          url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`,
+          data: {},
+          success: function (response) {
+            if (!(response["drinks"] == null)) {
+              const data = response["drinks"][0];
+
+              console.log(data, "this is data");
+
+              let search_thumb = data["strDrinkThumb"];
+              $("#drinkThumb").attr("src", search_thumb);
+
+              let search_inst = data["strInstructions"];
+              let temp_Inst = `<h5>${search_inst}</h5>`;
+              $("#SearchInst").append(temp_Inst);
+
+              let search_name = data["strDrink"];
+              let temp_drinkname = `<h1>${search_name}</h1>`;
+              $("#drinkName").append(temp_drinkname);
+
+              for (let i = 1; i <= 15; i++) {
+                let search_measures = "strMeasure" + i;
+                let search_ingredients = "strIngredient" + i;
+                if (
+                  data[search_measures] != null &&
+                  data[search_ingredients] != null
+                ) {
+                  let search_temp = `<p>${data[search_ingredients]} : ${data[search_measures]}<p>`;
+                  $("#searchRecipes").append(search_temp);
+                }
+              }
+            } else alert("관련 검색 데이터가 없습니다.");
+          },
+        });
+      }
+      //랜덤 칵테일 과의 충돌 방지를 위해 아이디 값등 변경
+    </script>
+  </head>
+  <body>
+    <input type="text" id="test" value="red" />
+    <button type="button" class="button" onclick="searchval()"></button>
+    <img id="drinkThumb" />
+    <p id="drinkName">asd</p>
+    <p id="searchRecipes">asd</p>
+  </body>
+</html>

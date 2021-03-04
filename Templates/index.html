@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/index.css') }}"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>VIII Liquor</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+      rel="stylesheet"
+    />
+    {% block css %} {% endblock %}
+    <script src="{{ url_for('static', filename='/SNL.js') }}"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <header>
+        <a href="./index" class="logo">
+          <img
+            src="https://cdn4.iconfinder.com/data/icons/drinks-solid-icons-vol-1/72/28-512.png"
+        /></a>
+        <nav>
+          <ul class="navIcons">
+            <li>
+              <a href="./logout" class="logoutButton">
+                <img
+                  class="Logout-Button-Custom"
+                  src="static/img/logoutICON.svg"
+                  aria-hidden="true"
+                  width="25px;"
+                  height="20px;"
+                />
+              </a>
+            </li>
+            <li></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div id="content-wrap">
+        <aside>
+          <h1 class="corpName">VIII Liquor</h1>
+          <ul>
+            <li><a href="./aboutUs">About Us</a></li>
+            <li><a href="./searchPage">Search Cocktails</a></li>
+            <li><a href="./cocktail">Get recommendations</a></li>
+            <li><a href="./contactUs">Contact Us</a></li>
+          </ul>
+        </aside>
+        {% block section %}
+        <section>
+          <div class="drinkCard">
+            <img src="static/img/indexImg.jpg" alt="indexIMG" />
+          </div>
+        </section>
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+{% extends 'index.html' %}
+{% block css %}
+
+<style>
+
+  /* #### 서치바 CSS #### */
+
+  /* placeholder 색상 변경*/
+  input::-webkit-input-placeholder {
+      color: white;
+  }
+
+  input:-moz-placeholder {
+      color: white;
+    }
+
+    /* 서치바 관련 */
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    /* 그라데이션 */
+    background: -webkit-linear-gradient(to right, orangered, darkblue);
+    background: linear-gradient(to right, orangered, darkblue);
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.7s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 800px;
+    caret-color:red;
+    transition: width 0.5s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
+
+
+    @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+    }
+
+
+
+
+</style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function searchval() {
+
+        // 추가한 내용 (app.py)
+        $('#SearchInst').empty();
+        $('#drinkName').empty();
+        $('#searchRecipes').empty();
+
+        let cocktail = $("#searchPage_id").val();
+        console.log(cocktail);
+        $.ajax({
+          type: "GET",
+          url: `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`,
+          data: {},
+          success: function (response) {
+
+            if (!(response["drinks"] == null)) {
+              const data = response["drinks"][0];
+
+              let search_thumb = data["strDrinkThumb"];
+              $("#drinkThumb").attr("src", search_thumb);
+
+              let search_inst = data["strInstructions"];
+              let temp_Inst = `<h5>${search_inst}</h5>`;
+              $("#SearchInst").append(temp_Inst);
+
+              let search_name = data["strDrink"];
+              let temp_drinkname = `<h1>${search_name}</h1>`;
+              $("#drinkName").append(temp_drinkname);
+
+              for (let i = 1; i <= 15; i++) {
+                let search_measures = "strMeasure" + i;
+                let search_ingredients = "strIngredient" + i;
+                if (
+                  data[search_measures] != null &&
+                  data[search_ingredients] != null
+                ) {
+                  let search_temp = `<p>${data[search_ingredients]} : ${data[search_measures]}<p>`;
+                  $("#searchRecipes").append(search_temp);
+                }
+              }
+
+            //  하단 alert 문구를 Search data does not exist :(.. Please enter the correct cocktail name.
+            //  으로 바꾸어 주면 어떨까 합니다.
+            } else alert("관련 검색 데이터가 없습니다.");
+          },
+        });
+      }
+  </script>
+
+{% endblock %}
+{% block section %}
+
+<section>
+  <div class="search-Box">
+        <div class="searchbar">
+          <input class="search_input" type="text" id="searchPage_id" name="" placeholder="Type and Search !">
+          <a class="search_icon" onclick="searchval()"><i class="fas fa-search"></i></a>
+        </div>
+  </div>
+      <hr>
+    <div>
+        <div>
+            <form>
+                <div>
+                    <img id="drinkThumb" width="450px"/>
+                    <hr>
+                    <p id="drinkName"></p>
+                    <hr>
+                    <div>
+                    <p id="SearchInst"></p>
+                    </div>
+                    <hr>
+                    <div>
+                    <p id="searchRecipes"></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </section>
+{% endblock %}

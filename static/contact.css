@@ -1,0 +1,324 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.contact
+{
+    width: 87vw;
+    min-height: 80vh;
+    padding: 100px 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url("3633511.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+
+}
+.contact .content {
+    max-width: 800px;
+    text-align: center;
+}
+.contact .content h2
+{
+    font-size: 44px;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 100px;
+}
+.contact .content p
+{
+    font-weight: 300;
+    color: #fff;
+    font-size: 24px;
+    margin-top: 30px;
+}
+.container
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.container .contactInfo
+{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.container .contactInfo .box
+{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+    right: 200px;
+}
+.container .contactInfo .box .icon
+{
+    min-width: 60px;
+    height: 60px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+}
+.container .contactInfo .box .text
+{
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color: whitesmoke;
+    flex-direction: column;
+    font-weight: 300;
+}
+.container .contactInfo .box .text h3
+{
+    font-weight: 500;
+    color: #00bcd4;
+}
+.contactForm
+{
+
+    width: 40%;
+    padding: 20px;
+    background: #fff;
+    margin-left: 150px;
+
+
+}
+.contactForm h2
+{
+    font-size: 30px;
+    color: #333;
+    font-weight: 500;
+}
+.contactForm .inputBox
+{
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    margin: auto;
+    padding-right: 50px;
+}
+.contactForm .inputBox input,
+.contactForm .inputBox textarea
+{
+    width: 100%;
+    font-size: 16px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    resize: none;
+}
+.contactForm .inputBox span
+{
+    position: absolute;
+    left: 0;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    pointer-events: none;
+    transition: 0.5s;
+    color: #666;
+}
+.contactForm .inputBox input:focus ~ span,
+.contactForm .inputBox input:valid ~ span,
+.contactForm .inputBox textarea:focus ~ span,
+.contactForm .inputBox textarea:valid ~ span
+{
+    color: #e91e63;
+    transform: translateY(-20px);
+}
+.contactForm .inputBox button
+{
+    width: 83px;
+    background: #00bcd4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+}
+
+@media (max-width: 991px)
+{
+    .contact
+    {
+        padding: 50px;
+    }
+    .container
+    {
+        flex-direction: column;
+    }
+    .container .contactInfo
+    {
+        margin-bottom: 40px;
+    }
+    .container .contactInfo,
+    .contactForm
+    {
+        width: 100%;
+    }
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+section {
+    justify-content: center;
+    float: left;
+    /* aside width */
+    margin-left: 195px;
+    margin-top: 10px;
+}
+aside {
+    /* for fixed side bar */
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    width: 185px;
+    padding-top: 20px;
+    background-image: url("https://image.winudf.com/v2/image1/Y29tLmdsYXNzd2F0ZXJ3YWxscGFwZXIuZ2xhc3N3YXRlcndhbGxwYXBlcl9zY3JlZW5fMTVfMTU1ODY2ODU3OF8wMDY/screen-15.jpg?fakeurl=1&type=.jpg");
+    background-size: cover;
+}
+aside > ul > li > a {
+    display: block;
+    color: #fff;
+    padding: 10px 0 10px 20px;
+}
+
+aside > h1 {
+    padding: 20px 0 20px 20px;
+    color: whitesmoke;
+}
+nav {
+    float: right;
+}
+
+.navIcons {
+    margin-right: 20px;
+}
+
+.navIcons > li {
+    display: inline-block;
+}
+
+.navIcons > li > a {
+    line-height: 65px;
+    padding: 0 30px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.navIcons > li > a:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* contents */
+/* clearfix */
+#content-wrap:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.corpName {
+    font-size: 1.8em;
+}
+
+#wrap {
+    width: 100%;
+    margin-top: 60px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 60px;
+    z-index: 2000;
+    background-image: url("https://previews.123rf.com/images/prapann/prapann1507/prapann150700516/43217625-white-marble-texture-background-pattern-with-high-resolution-.jpg");
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.loginIcon {
+    font-size: large;
+}
+
+.shoppingCartIcon {
+}
+
+.logo {
+    display: inline-block;
+    height: 36px;
+    margin: 12px 0 12px 25px;
+}
+
+.logo > img {
+    height: 36px;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #58666e;
+    background-color: #f0f3f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f6f6;
+}
+.comment
+{
+    width: 250px;
+    border: 2px solid #333;
+    position: absolute;
+    text-align: left;
+    height: 100px;
+    margin:auto;
+    margin-top: 320px;
+}
+.comment h3
+{
+    color: #00bcd4;
+}
+.textarea
+{
+    height: 20px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    background-color: transparent;
+    margin-bottom: 10px;
+    resize: none;
+    outline: none
+}
+
+input[type="submit"], button
+{
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+input[type="submit"]
+{
+    color: #fff;
+    background-color: #273c75
+}
+button
+{
+    color: #333;
+    background-color: transparent;
+}

@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #58666e;
+  background-color: #f0f3f4;
+}
+
+.corpName {
+  font-size: 1.8em;
+}
+
+#wrap {
+  width: 100%;
+  margin-top: 60px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+  height: 60px;
+  z-index: 2000;
+  background-image: url("https://previews.123rf.com/images/prapann/prapann1507/prapann150700516/43217625-white-marble-texture-background-pattern-with-high-resolution-.jpg");
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.loginIcon {
+  font-size: large;
+}
+
+.logo {
+  display: inline-block;
+  height: 36px;
+  margin: 12px 0 12px 25px;
+}
+
+.logo > img {
+  height: 36px;
+}
+
+nav {
+  float: right;
+  overflow: hidden;
+}
+
+.navIcons {
+  margin-right: 20px;
+}
+
+.navIcons > li {
+  display: inline-block;
+}
+
+.navIcons > li > a {
+  line-height: 65px;
+  padding: 0 30px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.navIcons > li > a:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* contents */
+/* clearfix */
+#content-wrap:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+aside {
+  /* for fixed side bar */
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  width: 185px;
+  padding-top: 20px;
+  background-image: url("https://image.winudf.com/v2/image1/Y29tLmdsYXNzd2F0ZXJ3YWxscGFwZXIuZ2xhc3N3YXRlcndhbGxwYXBlcl9zY3JlZW5fMTVfMTU1ODY2ODU3OF8wMDY/screen-15.jpg?fakeurl=1&type=.jpg");
+  background-size: cover;
+}
+
+.corpName {
+  font-family: "Monoton", cursive;
+}
+
+aside > ul > li > a {
+  display: block;
+  color: #fff;
+  padding: 10px 0 10px 20px;
+}
+
+aside > h1 {
+  padding: 20px 0 20px 20px;
+  color: whitesmoke;
+}
+
+section {
+  float: left;
+  /* aside width */
+  margin-left: 195px;
+  margin-top: 10px;
+}
+
+article {
+  margin: 10px;
+  padding: 25px;
+  background-color: white;
+}
+
+.drinkCard {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  shape-rendering: crispEdges;
+  shape-rendering: auto;
+}

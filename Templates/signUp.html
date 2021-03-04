@@ -1,0 +1,274 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Join Us Page</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: black;
+        opacity: 90%;
+      }
+
+      #bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      .signUpBox {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: 0;
+        margin-right: auto;
+        margin-left: auto;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        width: 50rem;
+        height: 30rem;
+        border-radius: 2px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+      }
+
+      .signUpBoxLeft {
+        background: orange;
+      }
+
+      .signUpBox_Right {
+        width: 50%;
+        height: 100%;
+        color: #fff;
+      }
+
+      .signUpBox_Left_Text {
+        position: relative;
+        padding: 2rem;
+      }
+
+      h1,
+      h2 {
+        font-weight: 300;
+        color: #101820;
+      }
+
+      .signUpBox_Corpname {
+        font-size: 2rem;
+      }
+
+      .signUpBox_Freetext {
+        font-size: 1.3rem;
+      }
+
+      .signUpBox_Right {
+        padding: 2.5rem;
+        background: whitesmoke;
+      }
+
+      label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: #ccc;
+      }
+
+      .form-control {
+        background-color: transparent;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+      }
+
+      [type="text"],
+      [type="password"] {
+        color: black;
+      }
+
+      .signUp_btn {
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: whitesmoke;
+        background: black;
+        border-radius: 2.1rem;
+        padding: 0.23rem 4rem;
+      }
+
+      .signUp_btn:focus,
+      .signUp_btn--form:hover {
+        background: orange;
+      }
+    </style>
+    <script>
+      function signUp() {
+        let user_val = $("#username").val();
+        let pass_val = $("#password").val();
+        let check_val = $("#passwordRepeat").val();
+        if (user_val == "") {
+          alert("아이디를 입력해주세요.");
+          return;
+        }
+
+        if (pass_val == "") {
+          alert("패스워드를 입력해주세요.");
+          return;
+        }
+
+        if (check_val == "") {
+          alert("패스워드 확인창에 값을 입력해주세요");
+          return;
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "/sign_up/check_dup",
+          data: {
+            username_give: user_val,
+          },
+          success: function (response) {
+            if (response["exists"]) {
+              console.log(response["exists"]);
+              alert("이미 존재하는 아아디입니다.");
+              return;
+            } else {
+              allOk();
+            }
+          },
+        });
+      }
+
+      function allOk() {
+        let user_val = $("#username").val();
+        let pass_val = $("#password").val();
+        let check_val = $("#passwordRepeat").val();
+        if (pass_val == check_val) {
+          $.ajax({
+            type: "POST",
+            url: "/api/signUp",
+            data: {
+              id_give: user_val,
+              pw_give: pass_val,
+              email_give: $("#email").val(),
+            },
+            success: function (response) {
+              if (response["result"] == "success") {
+                alert("회원가입이 완료되었습니다.");
+                window.location.href = "/login";
+              }
+            },
+          });
+        } else {
+          alert("패스워드가 확인과 일치하지 않습니다.");
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <img src="static/img/123.jpg" id="bg" alt="" />
+    <div class="signUpBox">
+      <div class="signUpBoxLeft">
+        <div class="signUpBox_Left_Text text-center">
+          <h1 class="signUpBox_Corpname">VIII Liquor</h1>
+          <h2 class="signUpBox_Freetext">당신이 원하게 될 칵테일 레시피.</h2>
+        </div>
+      </div>
+      <div class="signUpBox_Right">
+        <div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              class="form-control"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Username"
+              required=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email (생략해도 됨)</label>
+            <input
+              class="form-control"
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Email adress"
+              required=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              class="form-control"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="********"
+              required=""
+            />
+          </div>
+          <div class="form-group">
+            <label for="passwordRepeat">Repeat Password</label>
+            <input
+              class="form-control"
+              type="password"
+              name="passwordRepeat"
+              id="passwordRepeat"
+              placeholder="********"
+              required=""
+            />
+          </div>
+          <div>
+            <ul>
+              <li>
+                <input
+                  class="signUp_btn signUp_btn--form"
+                  type="button"
+                  value="Sign Up"
+                  onclick="signUp()"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

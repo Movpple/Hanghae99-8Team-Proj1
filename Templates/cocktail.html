@@ -1,0 +1,160 @@
+{% extends 'index.html' %}
+{% block css %}
+<style>
+
+    .SNL-RecipesStyle {
+        font-size: 18px;
+        font-weight: 100;
+        line-height: 20px;
+        letter-spacing: 0.5px;
+        margin: 40px 0 30px;
+    }
+
+    .SNL-strInstructionsStyle {
+        line-height: 20px;
+        margin: 40px 0 40px;
+        letter-spacing: 0.1px;
+    }
+
+    .SNL-strInstructionsBox {
+        width: 51%;
+        margin: auto;
+    }
+
+    .lineStyle {
+        width: 50%;
+        margin: auto;
+    }
+
+    .SNLbtn {
+        border-radius: 20px;
+        border: 1px solid #FF4B2B;
+        background-color: #FF4B2B;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 7px 45px;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .SNL-Form {
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 50px;
+        height: 100%;
+        text-align: center;
+    }
+
+    .SNLcontainer {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        position: fixed;
+        overflow: hidden;
+        width: 89%;
+        height: 89%;
+        margin: auto;
+        max-width: 100%;
+        min-height: 480px;
+    }
+
+    .SNLcontainer-left {
+        position: absolute;
+        top: 0;
+        height: 100%;
+    }
+
+    .SNLcontainer-left-Info {
+        left: 0;
+        width: 50%;
+        z-index: 2;
+    }
+
+    .SNLcontainer-Right {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+    }
+
+    .SNLbox {
+        padding: 0px;
+    }
+
+    .SNLcontainer-Right-Overlay {
+        background: -webkit-linear-gradient(to right, darkblue, black);
+        background: linear-gradient(to right, darkblue, black);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 0 0;
+        color: #FFFFFF;
+        position: relative;
+        left: -100%;
+        height: 100%;
+        width: 200%;
+    }
+
+    .SNL-overlay-panel {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 40px;
+        text-align: center;
+        top: 0;
+        height: 100%;
+        width: 50%;
+    }
+
+
+    .SNL-overlay-right {
+        right: 0;
+    }
+
+    @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+    }
+</style>
+{% endblock %}
+{% block section %}
+<section class="SNLbox">
+    <div class="SNLcontainer" id="SNLcontainer">
+        <div class="SNLcontainer-left SNLcontainer-left-Info">
+            <form class="SNL-Form" action="#">
+                <div>
+                    <h1 id="SNL-strDrink">Click the button on the right.</h1>
+                    <hr class="lineStyle">
+                    <div class="SNL-RecipesStyleBox">
+                        <p class="SNL-RecipesStyle" id="SNL-Recipes">When I read about the evils of drinking, i gave up reading.</p>
+                    </div>
+                    <hr class="lineStyle">
+                    <div class="SNL-strInstructionsBox">
+                        <p class="SNL-strInstructionsStyle"><h5 id="SNL-strInstructions"> VIII Liquor </h5></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="SNLcontainer-Right">
+            <div class="SNLcontainer-Right-Overlay">
+                <div class="SNL-overlay-panel SNL-overlay-right">
+                    <button onclick="q1()" class="SNLbtn howTo">Another Recipe.</button>
+                    <div class="question-box">
+                        <img id="SNL-strDrinkThumb" width="600"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

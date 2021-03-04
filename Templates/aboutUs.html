@@ -1,0 +1,147 @@
+{% extends 'index.html' %} {% block css %}
+<style>
+  .about-section {
+    padding: 100px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  }
+
+  .descTitle {
+    font-size: 2rem;
+  }
+
+  .descMain {
+    text-align: left;
+    margin-top: 30px;
+    font-style: italic;
+  }
+
+  .cardColumn {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+
+  .cardContainer {
+    padding: 0 16px;
+  }
+
+  .container::after,
+  .cardRow::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .cardTitle {
+    color: grey;
+  }
+
+  .cardContact {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .button:hover {
+    background-color: #555;
+  }
+
+  @media screen and (max-width: 700px) {
+    .cardColumn {
+      width: 100%;
+      display: block;
+    }
+  }
+</style>
+<script>
+  function toBlog() {
+    location.replace("https://pdylde.medium.com/");
+  }
+</script>
+
+{% endblock %} {% block section %}
+<section>
+  <div class="about-section">
+    <h1>About Us</h1>
+    <h2 class="descTitle">VIII Liquor</h2>
+    <div class="descMain">
+      Mix the drinks, taste better life.
+      <p>
+        we try to give our users the best experience you can have about cocktail
+        and liquor. <br />you can search about your favorite cocktail - or get a
+        random recommendations, it will be a nice surprise to yourself.
+      </p>
+    </div>
+  </div>
+
+  <h2 class="teamName"></h2>
+  <div class="cardRow">
+    <div class="cardColumn">
+      <div class="card">
+        <img src="/static/img/thumb1.png" alt="1" style="width: 100%" />
+        <div class="cardContainer">
+          <h2>이동은</h2>
+          <p class="cardTitle">Developer</p>
+          <p>
+            반갑습니다. 문화/예술을 좋아하며, 상상하는 것을 구현하는 것에 흥미를
+            느낍니다. :) 아직 부족하지만 좋은 개발자가 되도록 노력하겠습니다.
+          </p>
+          <p>callorput.whatever@gmail.com</p>
+          <p>
+            <button class="cardContact" onclick="toBlog()">Contact</button>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cardColumn">
+      <div class="card">
+        <img src="/static/img/thumb2.jpg" alt="2" style="width: 100%" />
+        <div class="cardContainer">
+          <h2>강지헌</h2>
+          <p class="cardTitle">Developer</p>
+          <p>
+            안녕하세요. 술 특히 칵테일과 소주를 사랑하지만 항해하는 동안에는
+            금주를 지향하고 있습니다. 항해가 끝나고 다같이 웃으며 한 잔 해요
+            &#x1F602;
+          </p>
+          <p>kjhstar90@gmail.com</p>
+          <p>
+            <button class="cardContact" onclick="toBlog()">Contact</button>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cardColumn">
+      <div class="card">
+        <img src="/static/img/thumb3.jpg" alt="3" style="width: 100%" />
+        <div class="cardContainer">
+          <h2>조현민</h2>
+          <p class="cardTitle">Developer</p>
+          <p>
+            안녕하세요. 멋진 팀원들과 함께 이 프로젝트를 구현하게 되어 너무
+            즐겁네요. 더 나은 개발자가 되도록 언제나 노력하겠습니다.
+          </p>
+          <p>neonlake@gmail.com</p>
+          <p><button class="cardContact" onclick="toBlog()">Contact</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

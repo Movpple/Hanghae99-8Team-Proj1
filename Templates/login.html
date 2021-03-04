@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+    ></script>
+
+    <title>(메인 & 로그인 페이지, 추후 수정 필요함)</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: black;
+      }
+
+      .wrap {
+        margin-top: 8rem;
+      }
+
+      .mainPageTitle {
+        font-family: "Montserrat";
+        text-align: center;
+        color: mintcream;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 27vh;
+        letter-spacing: 4px;
+      }
+
+      .mainPageText {
+        background-image: url(https://media0.giphy.com/media/aCCleAr6W1njtygxHC/giphy.gif?cid=ecf05e47k92z0zgyffws5myz1fs8p1d25uowx0ie8ois6sj7&rid=giphy.gif);
+        background-size: cover;
+        color: transparent;
+        -webkit-background-clip: text;
+        text-transform: uppercase;
+        font-size: 65px;
+        line-height: 0.9;
+        margin: 10px 0;
+      }
+
+      .loginForm {
+        padding: 3%;
+        width: 600px;
+        margin: -40px auto;
+      }
+      .loginForm h5 {
+        text-transform: uppercase;
+        font-size: 13px;
+        text-align: center;
+        margin-top: -7%;
+        margin-bottom: 4%;
+        color: #ffffff;
+      }
+
+      .loginButton {
+        width: 420px;
+        margin-left: 285px;
+        font-size: 11px;
+        letter-spacing: 4px;
+      }
+
+      .loginSubmit {
+        font-weight: 250;
+        width: 25%;
+        border: none;
+        border-radius: 1.2rem;
+        padding: 0.35%;
+      }
+
+      .joinUs {
+        font-weight: 200;
+        width: 20%;
+        border: none;
+        border-radius: 1.2rem;
+        padding: 0.35%;
+      }
+    </style>
+    <script>
+      function logIn() {
+        $.ajax({
+          type: "POST",
+          url: "/api/login",
+          data: { id_give: $("#userID").val(), pw_give: $("#password").val() },
+          success: function (response) {
+            if (response["result"] == "success") {
+              $.cookie("mytoken", response["token"]);
+
+              alert("로그인 완료!");
+              window.location.href = "/index";
+            } else {
+              alert("로그인 실패!");
+            }
+          },
+        });
+      }
+
+      function moveToReg() {
+        window.location.href = "/signUp";
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="mainPageTitle">
+        <h1 class="mainPageText">
+          <br />
+          VIII Liquor
+        </h1>
+        <p>For the drunkard.</p>
+      </div>
+      <div>
+        <div>
+          <div class="loginForm">
+            <h5>login</h5>
+            <div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="userID"
+                  id="userID"
+                  class="form-control"
+                  placeholder="Username"
+                  value="same"
+                  required="required"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Password"
+                  value="same"
+                  required="required"
+                />
+              </div>
+              <div class="loginButton">
+                <input
+                  type="button"
+                  class="loginSubmit"
+                  onclick="logIn()"
+                  value="Login"
+                />
+                <input
+                  type="button"
+                  class="joinUs"
+                  onclick="moveToReg()"
+                  value="Join us"
+                />
+              </div>
+            </div>
+          </div>
+          <div>{{msg}}</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
